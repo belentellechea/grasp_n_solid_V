@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Full_GRASP_And_SOLID
 {
-    public class Recipe
+    public class Recipe : IRecipeText
     {
         // Cambiado por OCP
         private IList<BaseStep> steps = new List<BaseStep>();
@@ -35,6 +35,7 @@ namespace Full_GRASP_And_SOLID
             this.steps.Remove(step);
         }
 
+/*
         // Agregado por SRP
         public string GetTextToPrint()
         {
@@ -49,7 +50,21 @@ namespace Full_GRASP_And_SOLID
 
             return result;
         }
+*/
+        //Agregado por DIP
+        public string GetRecipeText()
+        {
+            string result = $"Receta de {this.FinalProduct.Description}:\n";
+            foreach (BaseStep step in this.steps)
+            {
+                result = result + step.GetRecipeText() + "\n";
+            }
 
+            // Agregado por Expert
+            result = result + $"Costo de producción: {this.GetProductionCost()}";
+
+            return result;
+        }
         // Agregado por Expert
         public double GetProductionCost()
         {

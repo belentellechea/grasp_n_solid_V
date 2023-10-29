@@ -2,11 +2,16 @@ using System.IO;
 
 namespace Full_GRASP_And_SOLID
 {
-    public class FilePrinter : IPrinter
+    public class FilePrinter : IPrinter, IRecipeText
     {
-        public void PrintRecipe(Recipe recipe)
+        public void PrintRecipe(IRecipeText recipe)
         {
-            File.WriteAllText("Recipe.txt", recipe.GetTextToPrint());
+            File.WriteAllText("Recipe.txt", recipe.GetRecipeText());
+        }
+
+        public string GetRecipeText()
+        {
+            return "Receta a imprimir";
         }
     }
 }

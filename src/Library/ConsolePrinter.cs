@@ -2,11 +2,15 @@ using System;
 
 namespace Full_GRASP_And_SOLID
 {
-    public class ConsolePrinter : IPrinter
+    public class ConsolePrinter : IPrinter, IRecipeText
     {
-        public void PrintRecipe(Recipe recipe)
+        public void PrintRecipe(IRecipeText recipeText)
         {
-            Console.WriteLine(recipe.GetTextToPrint());
+            Console.WriteLine(recipeText.GetRecipeText());
+        }
+        public string GetRecipeText()
+        {
+            return "Receta a imprimir";
         }
     }
 }

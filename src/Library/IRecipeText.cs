@@ -7,6 +7,6 @@ namespace Full_GRASP_And_SOLID
 {
     public interface IRecipeText
     {
-        string GetRecipeText (Recipe recipe);
+        string GetRecipeText ();
     }
 }
